@@ -72,7 +72,7 @@ Go to Docker main page (https://www.docker.com), install docker engine and docke
 
 ### To start, restart and stop docker containers:
 ``` bash
-> docker-compose start CONTEINER
+> docker-compose start CONTAINER
 > docker-compose restart CONTAINER
 > docker-compose stop CONTAINER
 ```
