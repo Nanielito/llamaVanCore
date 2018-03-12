@@ -1,0 +1,42 @@
+version: '3.2'
+services:
+  llamavandb:
+    image: mongo
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d    
+    container_name: llamavandb
+    hostname: llamavan
+    networks:
+      - llamavannet
+    ports:
+      - 27017:27017 # Port used by mongodb to conecctions from clients.
+  llamavancore:
+    image: nanielito/llamavan-app:latest
+    container_name: llamavan
+    hostname: llamavan
+    networks:
+      - llamavannet
+    environment:
+      - COMMAND=start
+      - DB_HOST=llamavandb
+    ports:
+      - "3000:3000"
+  llamavancore-dev:
+    image: nanielito/llamavan-app:snapshot
+    volumes:
+      - ../:/home/llamaVanCore/src
+    container_name: llamavan-dev
+    hostname: llamavan
+    networks:
+      - llamavannet
+    environment:
+      - COMMAND=test
+      - DB_HOST=llamavandb
+    ports:
+      - "3000:3000"
+networks:
+  llamavannet:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.32.7.0/24
