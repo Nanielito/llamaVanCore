@@ -1,0 +1,28 @@
+{
+  "name": "llamavan",
+  "version": "0.1.0",
+  "private": true,
+  "description": "LlamaVan Core App",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nanielito/llamaVanCore.git"
+  },
+  "author": "nanielito",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nanielito/llamaVanCore/issues"
+  },
+  "homepage": "https://github.com/Nanielito/llamaVanCore#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.0.9",
+    "nodemon": "^1.17.1",
+    "pm2": "^2.10.1",
+    "underscore": "^1.8.3"
+  }
+}
