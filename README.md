@@ -85,9 +85,9 @@ Go to Docker Compose page documentation (https://docs.docker.com/compose) to vie
 > $ npm start
 ```
 
-### To start the Node.js server in test mode (development): 
+### To start the Node.js server in development: 
 ``` bash
-> $ npm test
+> $ npm start:dev
 ```
 
 ### To preview the app on web browser
@@ -108,7 +108,7 @@ Use the following prefix to create branches:
 * fix/ISSUE-DESCRIPTION for bug's fix.
 
 ## Version
-0.1.0
+v0.1.0
 
 ## Author
 * **DER** - *Initial work* - [nanielito](https://github.com/nanielito)
