@@ -10,7 +10,7 @@ services:
       - llamavannet
     ports:
       - 27017:27017 # Port used by mongodb to conecctions from clients.
-  llamavancore:
+  llamavanapp:
     image: nanielito/llamavan-app:latest
     container_name: llamavan
     hostname: llamavan
@@ -21,7 +21,7 @@ services:
       - DB_HOST=llamavandb
     ports:
       - "3000:3000"
-  llamavancore-dev:
+  llamavanapp-dev:
     image: nanielito/llamavan-app:snapshot
     volumes:
       - ../:/home/llamaVanCore/src
