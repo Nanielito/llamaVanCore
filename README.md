@@ -87,7 +87,7 @@ Go to Docker Compose page documentation (https://docs.docker.com/compose) to vie
 
 ### To start the Node.js server in development: 
 ``` bash
-> $ npm start:dev
+> $ npm run start:dev
 ```
 
 ### To preview the app on web browser
