@@ -5,7 +5,19 @@
   "description": "LlamaVan Core App",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon"
+    "start": "node src/app",
+    "start:dev": "nodemon src/app",
+    "pretest": "npm run lint",
+    "test": "mocha test -u bdd -R spec",
+    "posttest": "echo 'the tests has been run!'",
+    "lint": "jshint src/*.js src/**/*.js",
+    "build:clean": "rimraf src/bundle",
+    "build:bundle": "find 'src/public/javascripts/' -name '*.js' -exec bash -c 'echo $1 | sed -e s#public#bundle#g | xargs dirname | xargs mkdir -p; uglifyjs $1 -mc -o $(echo $1 | sed -e s#.js#.min.js#g | sed -e s#public#bundle#g)' - '{}' \\;",
+    "build:bundle:dev": "find 'src/public/javascripts/' -name '*.js' -exec bash -c 'echo $1 | sed -e s#public#bundle#g | xargs dirname | xargs mkdir -p; uglifyjs $1 -bc --comments 'all' -o $(echo $1 | sed -e s#.js#.min.js#g | sed -e s#public#bundle#g)' - '{}' \\;",
+    "prebuild": "npm run build:clean",
+    "build": "npm run build:bundle",
+    "prebuild:dev": "npm run build:clean",
+    "build:dev": "npm run build:bundle:dev"
   },
   "repository": {
     "type": "git",
@@ -18,11 +30,18 @@
   },
   "homepage": "https://github.com/Nanielito/llamaVanCore#readme",
   "dependencies": {
-    "express": "^4.16.2",
+    "express": "^4.16.3",
     "express-session": "^1.15.6",
     "mongoose": "^5.0.9",
     "nodemon": "^1.17.1",
     "pm2": "^2.10.1",
     "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5",
+    "mocha": "^5.0.4",
+    "rimraf": "^2.6.2",
+    "should": "^13.2.1",
+    "uglify-js": "^3.3.16"
   }
 }
